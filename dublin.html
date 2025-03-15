@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dublin Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav a:hover {
+            color: #f4a261;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #f4a261;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e76f51;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('places')">Places to Eat</a>
+        <a href="#" onclick="showSection('things')">Things to Do</a>
+    </nav>
+    <div class="container">
+        <div id="home">
+            <h1>Welcome to Dublin Guide!</h1>
+            <p>Your one-stop destination to explore Dublin.</p>
+            <h3>Check Your Fare</h3>
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="number" id="age" placeholder="Enter your age">
+            <button onclick="checkFare()">Check Fare</button>
+            <p id="fareResult"></p>
+            <h3>Your Food Preferences</h3>
+            <input type="text" id="foodName" placeholder="Enter your name">
+            <input type="text" id="foodChoice" placeholder="Enter your desired food cuisine">
+            <button onclick="showFood()">Submit</button>
+            <p id="foodResult"></p>
+        </div>
+        <div id="places" class="hidden">
+            <h2>Best Places to Eat in Dublin</h2>
+            <ul>
+                <li>The Woollen Mills</li>
+                <li>Fade Street Social</li>
+                <li>Brother Hubbard</li>
+            </ul>
+        </div>
+        <div id="things" class="hidden">
+            <h2>Top Things to Do in Dublin</h2>
+            <div class="activity">
+                <h3>Guinness Storehouse</h3>
+                <p>Opening Hours: 10:00 AM - 7:00 PM</p>
+                <p>Contact: +353 1 408 4800</p>
+                <video controls>
+                    <source src="guinness.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="activity">
+                <h3>Trinity College Library</h3>
+                <p>Opening Hours: 9:30 AM - 5:00 PM</p>
+                <p>Contact: +353 1 896 1000</p>
+                <video controls>
+                    <source src="trinity.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="activity">
+                <h3>Dublin Zoo</h3>
+                <p>Opening Hours: 9:30 AM - 6:00 PM</p>
+                <p>Contact: +353 1 474 8900</p>
+                <video controls>
+                    <source src="dublinzoo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('places').classList.add('hidden');
+            document.getElementById('things').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+        function checkFare() {
+            let age = document.getElementById('age').value;
+            let result = age <= 19 ? "You can pay child’s fare" : "You must pay the adult fare";
+            document.getElementById('fareResult').innerText = result;
+        }
+        function showFood() {
+            let name = document.getElementById('foodName').value;
+            let food = document.getElementById('foodChoice').value;
+            document.getElementById('foodResult').innerText = `${name} prefers ${food}.`;
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Dublin Travel Guide. All rights reserved.</p>
+    </footer>
+</body>
+</html>
